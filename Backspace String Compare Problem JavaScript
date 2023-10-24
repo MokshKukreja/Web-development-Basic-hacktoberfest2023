@@ -1,0 +1,26 @@
+/**
+ * Function to compare two strings after handling backspaces.
+ * @param {string} S
+ * @param {string} T
+ * @return {boolean} Returns true if the final strings are equal, false otherwise.
+ */
+const backspaceCompare = (S, T) => {
+    const processString = (str) => {
+        const stack = [];
+        for (let char of str) {
+            if (char !== '#') {
+                stack.push(char);
+            } else {
+                stack.pop();
+            }
+        }
+        return stack.join('');
+    };
+
+    return processString(S) === processString(T);
+};
+
+// Example usage:
+const S = "ab#c";
+const T = "ad#c";
+console.log(backspaceCompare(S, T)); // Output: true
